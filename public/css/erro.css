@@ -1,0 +1,92 @@
+body{
+    background: url('/images/bg.png');
+    background-repeat: repeat;
+    background-size: 100vw;
+    font-family: 'Londrina Solid';
+}
+
+.vignette {
+  position: fixed;
+  z-index: -10;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  box-shadow: 0 0 200px rgba(0,0,0,0.9) inset;
+}
+
+.btn-cadastro{
+    color: #68332D;
+    background-color: #FFECE2 ;
+    font-family: 'Londrina Solid';
+    border-style: none;
+    border-radius: 45px;
+    width: 157px;
+    height: 48px;
+    font-size: x-large;
+    margin-left: 43vw;
+}
+
+.btn-login{
+    background-color: #68332D;
+    color: #FFECE2;
+    font-family: 'Londrina Solid';
+    border-style: none;
+    border-radius: 45px;
+    width: 157px;
+    height: 48px;
+    font-size: x-large;
+}
+.navbar-login{
+    background-color: #EDD8CD;
+}
+
+.btn-entrar{
+    background-color: #68332D;
+    color: #FFECE2;
+    font-family: 'Londrina Solid';
+    border-style: none;
+    border-radius: 45px;
+    width: 157px;
+    height: 3vw;
+    font-size: x-large;
+}
+
+.linkspagina{
+    color: #68332D;
+}
+
+.esqueci{
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+}
+
+.corpo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 80vh;
+}
+
+.areaErro{
+    text-align: center;
+    background-color: #EDD8CD;
+    margin-top: 10vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Londrina Solid';
+    width: 376px;
+    height: 454px;
+    border-style: none;
+    border-radius: 45px;
+}
+
+.emojierro{
+    width: 15vw;
+    height: auto;
+    margin: 3vw;
+}

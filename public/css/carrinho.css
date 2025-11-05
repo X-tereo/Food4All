@@ -1,0 +1,87 @@
+body{
+    font-family: 'Londrina Solid';
+    background: url('/images/bg.png');
+}
+
+.navbar-login{
+    background-color: #EDD8CD;
+}
+
+.carrinho{
+    background-color: #EDD8CD;
+    width:70vw;
+    height:35vw;
+    padding: 15px;
+    border-radius: 25px;
+}
+
+.caixa{
+    display: flex;
+    padding: 3%;
+    justify-content: center;
+}
+
+.caixa2{
+    display: flex;
+    flex-direction: row;
+    gap: 3vw;
+}
+
+.spacernav{
+    opacity: 0;
+}
+
+.perfilbola{
+    margin-right: 5vw;
+}
+
+.comidas{
+    margin-top: 1vw;
+    white-space: nowrap;
+    display: flex;
+    flex-direction: column;
+    max-height: 355px;
+    width: 500px;
+    overflow-y: scroll;
+    gap: 10px;
+    scrollbar-width: auto;
+    scroll-behavior: smooth;
+    scrollbar-color:#68332D #ffffff00;
+    align-items: center;
+    padding: 1vw 0 1vw 0;
+}
+
+.caixacomida{
+    border-style: none;
+    border-radius: 20px;
+    background-color:#FFECE2;
+    height: 75px;
+    width: 435px;
+    flex-shrink: 0;
+}
+
+.btn-comprar{
+    background-color: #68332D;
+    color: #FFECE2;
+    border-style: none;
+    border-radius: 10px;
+    width: 350px;
+    height: 75px;
+    font-size: xxx-large;
+}
+
+.textofrete{
+    margin-bottom: 10vw;
+}
+
+.btnback img{
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    left: 13vw;
+    top: 7vw;
+}
+
+.titulocart{
+    margin-left: 2vw;
+}

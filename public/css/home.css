@@ -1,0 +1,352 @@
+.banner{
+    background: url('/images/homebg.png');
+    width:98.8vw;
+    height:100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align:center;
+    background-size: cover;
+}
+
+.imagem-esquerda{
+    position: absolute;
+    left: 0;
+    top: 20%;
+}
+
+.imagem-esquerda img{
+    width: 400px;
+}
+
+.sobre1{
+    background: url('/images/sobrebg.png');
+    background-size: cover;
+    width:98.8vw;
+    height:120vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align:center;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+}
+
+.hidden {
+  opacity: 0;
+  transform: translateX(-100px);
+  transition: all 1s ease-out;
+}
+   
+.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.imagem-direita {
+  position: absolute;
+  right: -22%;        /* pushes part of the image off-screen */
+  top: 50%;
+  transform: translateY(-50%); /* vertically centers it */
+  overflow: visible;
+}
+
+.imagem-direita img {
+  width: 100%;
+  max-width: 600px;
+  transform-origin: center center;
+  transition: transform 0.1s linear;
+}
+
+.textoing{
+    width: 20vw;
+    position: absolute;
+    top: 40%;
+    left: 30%;
+    color: #FFECE2;
+    font-size: 2vw;
+}
+
+.imggelo{
+    position: absolute;
+    right: 0;
+    bottom: -220%;
+    width: 400px;
+}
+
+.textoref{
+    width: 20vw;
+    position: absolute;
+    top: 50%;
+    right: 25%;
+    color: #FFECE2;
+    font-size: 2vw;
+}
+
+.sobre2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #68332D;
+    width:98.8vw;
+    height:100vh;
+}
+
+body{
+    font-family: 'Londrina Solid';
+}
+
+.logowhite{
+    width: 30vw;
+    height: 13vw;
+}
+
+.titulostroke{
+    margin-top: 2vw;
+    -webkit-text-stroke: 1px #FFECE2;
+    font-size: 5vw;
+}
+
+.titulowt{
+    color: #FFECE2;
+    text-align: center;
+    padding-top: 2vw;
+    width: 70vw;
+    font-size: 3vw;
+}
+
+.subtitulowt{
+    position: absolute;
+    color: #FFECE2;
+    text-align: left;
+    width: 40vw;
+    font-size: 3vw;
+    left: 2vw;
+    bottom: -200%;
+}
+
+.textoiso{
+    color: #FFECE2;
+    position: absolute;
+    bottom: -160%;
+    right: 20vw;
+}
+
+.textogelo{
+    color: #FFECE2;
+    position: absolute;
+    bottom: -220%;
+    right: 20vw;
+}
+
+.btn-cadastro{
+    color: #68332D;
+    background-color: #FFECE2 ;
+    font-family: 'Londrina Solid';
+    border-style: none;
+    border-radius: 45px;
+    width: 157px;
+    height: 48px;
+    font-size: x-large;
+    margin-left: 43vw;
+}
+
+.btn-login{
+    background-color: #68332D;
+    color: #FFECE2;
+    font-family: 'Londrina Solid';
+    border-style: none;
+    border-radius: 45px;
+    width: 157px;
+    height: 48px;
+    font-size: x-large;
+}
+.navbar-login{
+    background-color: #EDD8CD;
+}
+
+.vignette {
+  position: fixed;
+  z-index: -10;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  box-shadow: 0 0 200px rgba(0,0,0,0.9) inset;
+}
+
+.areaLogin{
+    text-align: center;
+    background-color: #EDD8CD;
+    margin-top: 10vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Londrina Solid';
+    width: 376px;
+    height: 454px;
+    border-style: none;
+    border-radius: 45px;
+}
+
+.areaLogin2{
+    text-align: center;
+    background-color: #EDD8CD;
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Londrina Solid';
+    width: 376px;
+    height: 674px;
+    border-style: none;
+    border-radius: 45px;
+}
+
+
+.textoBanner{
+    width: 80vw;
+    font-size: 5vw;
+    color: white;
+    margin-top: 5vw;
+}
+
+.tituloCadastro{
+    font-size: 4vw;
+}
+
+.caixalogin{
+    color: #68332D;
+    font-size: 20px;
+    text-align: center;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+    background-color: #FFECE2;
+    height: 3vw;
+    width: 20vw;
+    border-style: none;
+    border-radius: 45px;
+}
+
+.caixalogin2{
+    color: #68332D;
+    font-size: 20px;
+    text-align: center;
+    resize: none;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+    background-color: #FFECE2;
+    height: 6vw;
+    width: 20vw;
+    border-style: none;
+    border-radius: 20px;
+}
+
+.caixalogin::placeholder{
+    text-align: left;
+    font-size: 20px;
+    padding-left: 1vh;
+    color: #68332D;
+}
+
+.caixalogin2::placeholder{
+    text-align: left;
+    font-size: 20px;
+    padding-left: 1vh;
+    color: #68332D;
+}
+
+.btn-entrar{
+    background-color: #68332D;
+    color: #FFECE2;
+    font-family: 'Londrina Solid';
+    border-style: none;
+    border-radius: 45px;
+    width: 157px;
+    height: 3vw;
+    font-size: x-large;
+}
+
+.linkspagina{
+    color: #68332D;
+}
+
+.esqueci{
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+}
+
+.comidas{
+    background:url('/images/backgroundcomida.png') ;
+    text-align: center;
+    height:800px;
+    color: #FFECE2;
+}
+
+.listacomidas{
+    white-space: nowrap;
+    display: flex;
+    height: 620px;
+    overflow-x: scroll;
+    padding: 25px;
+    gap: 25px;
+    scroll-behavior: smooth;
+    scrollbar-width: auto;
+    scrollbar-color:#68332D #ffffff2d;
+}
+
+.caixacomida{
+    padding-right: 5px;
+    padding-left: 5px;
+    padding-top:10px;
+    color:#68332D;
+    border-style: none;
+    border-radius: 20px;
+    background-color:#EDD8CD;
+    height: 550px;
+    width: 300px;
+    flex-shrink: 0;
+    font-size:24px;
+    white-space: wrap;
+}
+
+footer{
+    background-color: #68332D;
+    height:250px;
+    color: #FFECE2;
+    display: flex;
+    padding: 30px 60px;
+}
+
+.footeremail, .footertelefone {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+footer > div:last-child {
+  text-align: left;
+  font-size: 14px;
+  line-height: 1.4;
+  max-width: 500px;
+}
+
+footer > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+
+}
+
+.footertext{
+    font-size:30px;
+}
