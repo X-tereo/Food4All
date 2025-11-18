@@ -5,6 +5,7 @@ const MongoClient = require('mongodb').MongoClient;
 const session = require('express-session');
 const bcrypt = require('bcrypt');
 const dotenv = require('dotenv');
+require('dotenv').config();
 
 const app = express();
 const porta = 3000;
@@ -19,7 +20,6 @@ app.use(session({
 
 app.use(express.static("public"));
 
-const urlMongo = process.env.urlMongo
 const nomeBanco = 'F4ADB';
 
 app.get('/registro', (req, res) => {
@@ -31,7 +31,7 @@ app.get('/api/username', async (req, res) => {
     return res.status(401).json({ error: 'Not logged in' });
   }
 
-  const cliente = new MongoClient(urlMongo, { useUnifiedTopology: true });
+  const cliente = new MongoClient(process.env.urlMongo, { useUnifiedTopology: true });
 
   try {
     await cliente.connect();
@@ -63,7 +63,7 @@ app.get('/api/userinfo', async (req, res) => {
     return res.status(401).json({ error: 'Not logged in' });
   }
 
-  const cliente = new MongoClient(urlMongo, { useUnifiedTopology: true });
+  const cliente = new MongoClient(process.env.urlMongo, { useUnifiedTopology: true });
 
   try {
     await cliente.connect();
@@ -106,7 +106,7 @@ Restrições alimentares: ${usuario.restricao || '-'}
 
 app.post('/registro', async (req, res) => {
     if(req.body.senha==req.body.confsenha){
-        const cliente = new MongoClient(urlMongo, { useUnifiedTopology: true });
+        const cliente = new MongoClient(process.env.urlMongo, { useUnifiedTopology: true });
     try{
         await cliente.connect();
         const banco = cliente.db(nomeBanco);
@@ -158,7 +158,7 @@ app.get('/login', (req, res) => {
 });
 
 app.post('/login', async (req, res) => {
-    const cliente = new MongoClient(urlMongo, { useUnifiedTopology: true });
+    const cliente = new MongoClient(process.env.urlMongo, { useUnifiedTopology: true });
     try {
         await cliente.connect();
         const banco = cliente.db(nomeBanco);
@@ -253,7 +253,7 @@ app.get('/atualizar', protegerRota, (req, res) => {
 });
 
 app.post('/atualizar', async (req,res) => {
-  const cliente = new MongoClient(urlMongo, { useUnifiedTopology: true });
+  const cliente = new MongoClient(process.env.urlMongo, { useUnifiedTopology: true });
   
   try{
         await cliente.connect();
@@ -298,7 +298,7 @@ app.get('/compra', protegerRota, (req, res) => {
 });
 
 app.post('/mudarsenha', async (req, res) => {
-  const cliente = new MongoClient(urlMongo, { useUnifiedTopology: true });
+  const cliente = new MongoClient(process.env.urlMongo, { useUnifiedTopology: true });
 
   try {
     await cliente.connect();
