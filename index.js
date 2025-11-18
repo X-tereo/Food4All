@@ -4,6 +4,7 @@ const express = require('express');
 const MongoClient = require('mongodb').MongoClient;
 const session = require('express-session');
 const bcrypt = require('bcrypt');
+const dotenv = require('dotenv');
 
 const app = express();
 const porta = 3000;
@@ -18,7 +19,7 @@ app.use(session({
 
 app.use(express.static("public"));
 
-const urlMongo = 'mongodb+srv://rm14093_db_user:130309@food4all.riy0qv0.mongodb.net/?appName=Food4All';
+const urlMongo = process.env.urlMongo
 const nomeBanco = 'F4ADB';
 
 app.get('/registro', (req, res) => {
