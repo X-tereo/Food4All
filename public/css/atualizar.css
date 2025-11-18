@@ -1,0 +1,105 @@
+body {
+    font-family: 'Londrina Solid';
+    background: url('/images/bg.png');
+}
+
+.navbar-login{
+    background-color: #EDD8CD;
+    text-align: center;
+}
+
+.textopag{
+    align-self: center;
+    justify-self: center;
+}
+
+.perfilbola{
+    margin-right: 5vw;
+}
+
+.vignette {
+  position: fixed;
+  z-index: -10;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  box-shadow: 0 0 200px rgba(0,0,0,0.9) inset;
+}
+
+.corpo2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 98vw;
+    height: 89vh;
+}
+
+.areaLogin2{
+    text-align: center;
+    background-color: #EDD8CD;
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Londrina Solid';
+    width: 376px;
+    height: 454px;
+    border-style: none;
+    border-radius: 45px;
+}
+
+.caixalogin{
+    color: #68332D;
+    font-size: 20px;
+    text-align: center;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+    background-color: #FFECE2;
+    height: 3vw;
+    width: 20vw;
+    border-style: none;
+    border-radius: 45px;
+}
+
+.caixalogin2{
+    color: #68332D;
+    font-size: 20px;
+    text-align: center;
+    resize: none;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+    background-color: #FFECE2;
+    height: 6vw;
+    width: 20vw;
+    border-style: none;
+    border-radius: 20px;
+}
+
+.caixalogin::placeholder{
+    text-align: left;
+    font-size: 20px;
+    padding-left: 1vh;
+    color: #68332D;
+}
+
+.caixalogin2::placeholder{
+    text-align: left;
+    font-size: 20px;
+    padding-left: 1vh;
+    color: #68332D;
+}
+
+.btn-entrar{
+    background-color: #68332D;
+    color: #FFECE2;
+    font-family: 'Londrina Solid';
+    border-style: none;
+    border-radius: 45px;
+    width: 157px;
+    height: 3vw;
+    font-size: x-large;
+}

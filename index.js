@@ -1,5 +1,3 @@
-
-
 //Setup do servidor Node.js
 
 const express = require('express');
@@ -20,7 +18,7 @@ app.use(session({
 
 app.use(express.static("public"));
 
-const urlMongo = 'mongodb+srv://rm14093_db_user:IsPuhBw9KJSg5KDV@food4all.riy0qv0.mongodb.net/?retryWrites=true&w=majority&appName=Food4All';
+const urlMongo = 'mongodb+srv://rm14093_db_user:130309@food4all.riy0qv0.mongodb.net/?appName=Food4All';
 const nomeBanco = 'F4ADB';
 
 app.get('/registro', (req, res) => {
@@ -84,6 +82,7 @@ app.get('/api/userinfo', async (req, res) => {
     const info = `
 Nome: ${usuario.nome || '-'}<br>
 Email: ${usuario.email || '-'}<br>
+Senha: *********** <a href="/mudarsenha"><button class="btnSenha">Alterar</button></a><br>
 Altura: ${usuario.altura || '-'} cm<br>
 Peso: ${usuario.peso || '-'} kg<br>
 Peso alvo: ${usuario.pesoalvo || '-'} kg<br>
@@ -224,6 +223,120 @@ app.get('/', (req, res) => {
             return res.send('Erro ao sair!');
         }
     });
+});
+
+const { gerarFraseMotivacional, limparCache } = require('./ia/motivacao.js');
+
+// Nova rota para gerar frase motivacional
+app.get('/api/motivacao', async (req, res) => {
+  try {
+    const usuario = {
+      nome: req.session.nome,
+      email: req.session.email,
+      peso: req.session.peso,
+      altura: req.session.altura,
+      pesoalvo: req.session.pesoalvo,
+      restricao: req.session.restricao
+    };
+
+    const frase = await gerarFraseMotivacional(usuario);
+    res.json({ frase });
+  } catch (erro) {
+    console.error("Erro na rota /api/motivacao:", erro);
+    res.status(500).json({ erro: "Erro ao gerar frase motivacional." });
+  }
+});
+
+app.get('/atualizar', protegerRota, (req, res) => {
+    res.sendFile(__dirname + '/views/atualizar.html')
+});
+
+app.post('/atualizar', async (req,res) => {
+  const cliente = new MongoClient(urlMongo, { useUnifiedTopology: true });
+  
+  try{
+        await cliente.connect();
+        const banco = cliente.db(nomeBanco);
+        const colecaoUsuarios = banco.collection('usuarios');
+
+          const peso = req.body.peso;
+          const altura = req.body.altura;
+          const restricao = req.body.restdiet;
+          const pesoalvo = req.body.pesoalvo;
+          const promptIA = `
+          Baseado nos dados do usuário:
+          - Altura: ${altura} cm
+          - Peso: ${peso} kg
+          - Peso alvo: ${pesoalvo} kg
+          - Restrições alimentares: ${restricao}
+
+          Gere um plano de dieta detalhado e recomendações de estilo de vida que ajudem o usuário a alcançar seu peso alvo. Inclua tipos de dieta (exemplo: keto, low-carb, alto-proteína) e sugestões de mudanças no estilo de vida (exemplo: exercícios, horários de sono, etc.).`;
+          await colecaoUsuarios.updateOne({email: req.session.email},{$set:{
+              altura: altura,
+              peso: peso,
+              restricao: restricao,
+              pesoalvo: pesoalvo,
+              prompt: promptIA
+            }});
+            const chaveCache = req.session.email || req.body.usuario;
+            if (chaveCache) limparCache(chaveCache);
+            res.redirect('/perfil');
+    } catch (erro) {
+        res.send('Erro ao mudar o informações.');
+    } finally {
+        cliente.close();
+    }
+});
+
+app.get('/mudarsenha', protegerRota, (req, res) => {
+    res.sendFile(__dirname + '/views/mudarsenha.html')
+});
+
+app.get('/compra', protegerRota, (req, res) => {
+    res.sendFile(__dirname + '/views/compra.html')
+});
+
+app.post('/mudarsenha', async (req, res) => {
+  const cliente = new MongoClient(urlMongo, { useUnifiedTopology: true });
+
+  try {
+    await cliente.connect();
+    const banco = cliente.db(nomeBanco);
+    const colecaoUsuarios = banco.collection('usuarios');
+
+    const email = req.session.email;
+    if (!email) return res.send('Sessão expirada. <a href="/mudarsenha">Tente novamente</a>');
+
+    const usuario = await colecaoUsuarios.findOne({ email });
+    if (!usuario) return res.send('Usuário não encontrado. <a href="/mudarsenha">Tente novamente</a>');
+
+    console.log('senhaantiga:', req.body.senhaantiga);
+    console.log('usuario.senha:', usuario.senha);
+
+    if (!req.body.senhaantiga || !usuario.senha) {
+      return res.send('Campos de senha inválidos. <a href="/mudarsenha">Tente novamente</a>');
+    }
+
+    const senhaCorreta = await bcrypt.compare(req.body.senhaantiga, usuario.senha);
+    if (!senhaCorreta) return res.send('Senha antiga incorreta. <a href="/mudarsenha">Tente novamente</a>');
+
+    if (req.body.senha !== req.body.confsenha)
+      return res.send('Senhas não coincidem. <a href="/mudarsenha">Tente novamente</a>');
+
+    const senhaCriptografada = await bcrypt.hash(req.body.senha, 10);
+
+    await colecaoUsuarios.updateOne(
+      { email },
+      { $set: { senha: senhaCriptografada } }
+    );
+
+    res.redirect('/perfil');
+  } catch (erro) {
+    console.error(erro);
+    res.send('Erro ao alterar a senha. <a href="/mudarsenha">Tente novamente</a>');
+  } finally {
+    await cliente.close();
+  }
 });
 
 app.listen(porta, () => {

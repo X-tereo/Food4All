@@ -350,3 +350,24 @@ footer > div {
 .footertext{
     font-size:30px;
 }
+
+.imggrupo{
+    width: 30vw;
+    border-radius: 2vw;
+}
+
+.sobre{
+    padding: 2vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: #68332D;
+    width: 100%;
+}
+
+.txtgrp{
+    color: #FFECE2;
+    font-size: 2.5vw;
+    margin-left: 1vw;
+}

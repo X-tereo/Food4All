@@ -28,25 +28,31 @@
     </div>
     <div class="sugestoes">
         <div class="comidas">
-        <h1>Sugestões para hoje</h1>
+        <h1>Recomendações para hoje</h1>
         <div class="listacomidas">
-            <div class="caixacomida"></div>
-            <div class="caixacomida"></div>
-            <div class="caixacomida"></div>
-            <div class="caixacomida"></div>
-            <div class="caixacomida"></div>
+            <div class="caixacomida"><img src="/images/bulking.png"><h1>Bulking</h1><button onclick="comprar()" class="btncarrinhodark"><img src="/images/carrinhodark.png" alt=""></button></div>
+            <div class="caixacomida"><img src="/images/veggie.png"><h1>Veggie</h1><button onclick="comprar()" class="btncarrinhodark"><img src="/images/carrinhodark.png" alt=""></button></div>
+            <div class="caixacomida"><img src="/images/salada.png"><h1>Salada</h1><button onclick="comprar()" class="btncarrinhodark"><img src="/images/carrinhodark.png" alt=""></button></div>
+            <div class="caixacomida"><img src="/images/salmão.png"><h1>Salmão</h1><button onclick="comprar()" class="btncarrinhodark"><img src="/images/carrinhodark.png" alt=""></button></div>
+            <div class="caixacomida"><img src="/images/burrito.png"><h1>Veg Burrito</h1><button onclick="comprar()" class="btncarrinhodark"><img src="/images/carrinhodark.png" alt=""></button></div>
+            <div class="caixacomida"><img src="/images/sushi.png"><h1>Japonês</h1><button onclick="comprar()" class="btncarrinhodark"><img src="/images/carrinhodark.png" alt=""></button></div>
+            <div class="caixacomida"><img src="/images/snack.png"><h1>Lanche Leve</h1><button onclick="comprar()" class="btncarrinhodark"><img src="/images/carrinhodark.png" alt=""></button></div>
+            <div class="caixacomida"><img src="/images/feijuca.png"><h1>Feijuca</h1><button onclick="comprar()" class="btncarrinhodark"><img src="/images/carrinhodark.png" alt=""></button></div>
         </div>
+    </div>
     </div>
     <div class="novamente">
         <div class="comidas2">
-        <h1>Peça Novamente</h1>
+        <h1 class="txtnov">Peça novamente</h1>
         <div class="listacomidas2">
-            <div class="caixacomida2"></div>
-            <div class="caixacomida2"></div>
-            <div class="caixacomida2"></div>
-            <div class="caixacomida2"></div>
-            <div class="caixacomida2"></div>
+            <div class="caixacomida2"><img src="/images/bulking.png"><h1>Bulking</h1><button onclick="comprar()" class="btncarrinhodark"><img src="/images/carrinholight.png" alt=""></button></div>
+            <div class="caixacomida2"><img src="/images/veggie.png"><h1>Veggie</h1><button onclick="comprar()" class="btncarrinhodark"><img src="/images/carrinholight.png" alt=""></button></div>
+            <div class="caixacomida2"><img src="/images/salada.png"><h1>Salada</h1><button onclick="comprar()" class="btncarrinhodark"><img src="/images/carrinholight.png" alt=""></button></div>
+            <div class="caixacomida2"><img src="/images/salmão.png"><h1>Salmão</h1><button onclick="comprar()" class="btncarrinhodark"><img src="/images/carrinholight.png" alt=""></button></div>
+            <div class="caixacomida2"><img src="/images/sushi.png"><h1>Japonês</h1><button onclick="comprar()" class="btncarrinhodark"><img src="/images/carrinholight.png" alt=""></button></div>
+            <div class="caixacomida2"><img src="/images/feijuca.png"><h1>Feijuca</h1><button onclick="comprar()" class="btncarrinhodark"><img src="/images/carrinholight.png" alt=""></button></div>
         </div>
+    </div>
     </div>
     <footer>
         <div>
@@ -55,7 +61,25 @@
         </div>
         <div><p class="footertext">Todos direitos reservados à Food4All, qualquer uso não autorizado do branding, logo e/ou nome da empresa é sujeito a repercussões legais.</p></div>
     </footer>
+    <script>
+        function comprar(){
+            alert('Devido a limitações de tempo e escopo do projeto esta funcionalidade não foi implementada.')
+        }
+    </script>
     <script src="/dadosuser.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <script>
+document.addEventListener('DOMContentLoaded', async () => {
+  try {
+    const resposta = await fetch('/api/motivacao');
+    if (!resposta.ok) throw new Error('Falha ao gerar frase');
+    const data = await resposta.json();
+    document.getElementById('textoIA').innerText = data.frase || 'Bem-vindo ao seu painel!';
+  } catch (erro) {
+    console.error(erro);
+    document.getElementById('textoIA').innerText = 'Não foi possível gerar uma frase agora.';
+  }
+});
+</script>
 </body>
 </html>

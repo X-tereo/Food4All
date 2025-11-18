@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "@google/generative-ai": "^0.24.1",
     "accepts": "^2.0.0",
     "ansi-regex": "^6.2.2",
     "bcrypt": "^6.0.0",

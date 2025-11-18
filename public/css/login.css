@@ -56,7 +56,7 @@ body{
   box-shadow: 0 0 200px rgba(0,0,0,0.9) inset;
 }
 
-.areaLogin{
+.areaLogin{ 
     text-align: center;
     background-color: #EDD8CD;
     margin-top: 10vh;

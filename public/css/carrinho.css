@@ -52,12 +52,29 @@ body{
 }
 
 .caixacomida{
+    display: flex;
+    gap: 1vw;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
     border-style: none;
     border-radius: 20px;
     background-color:#FFECE2;
     height: 75px;
     width: 435px;
     flex-shrink: 0;
+}
+
+.caixacomida img{
+    width: 4vw;
+    height: 4vw;
+}
+
+.caixacomida p{
+    margin-top: 1.5vw;
+    color: #68332D;
+    font-size: 3vw;
+    text-align: center;
 }
 
 .btn-comprar{
@@ -84,4 +101,9 @@ body{
 
 .titulocart{
     margin-left: 2vw;
+}
+
+.btncarrinhodark{
+    border-style: none;
+    background: none;
 }
